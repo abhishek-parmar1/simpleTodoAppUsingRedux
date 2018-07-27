@@ -1,2 +1,0 @@
-# simpleTodoAppUsingRedux
-Created with CodeSandbox
