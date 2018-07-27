@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TodoApp = () => {
+const TodoApp = () => {
   return (
     <div className="Todo-App">
       <h1>Hello CodeSandbox</h1>
@@ -8,3 +8,5 @@ export const TodoApp = () => {
     </div>
   );
 };
+
+export default TodoApp;
