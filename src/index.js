@@ -12,7 +12,7 @@ const rootReducer = combineReducers({ ...reducers });
 const store = createStore(rootReducer);
 
 // import the components
-import { TodoApp } from "./components/todoApp/todoApp";
+import TodoApp from "./components/todoApp/todoApp";
 
 // component rendering configuration
 const rootElement = document.getElementById("root");
