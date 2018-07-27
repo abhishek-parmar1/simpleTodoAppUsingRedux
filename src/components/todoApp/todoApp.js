@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-const TodoApp = () => {
-  return (
-    <div className="Todo-App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
-};
+class TodoApp extends Component {
+  render() {
+    return (
+      <div className="Todo-App">
+        <h1>Simple Todo App using react and redux created with codesandbox</h1>
+      </div>
+    );
+  }
+}
 
 export default TodoApp;
