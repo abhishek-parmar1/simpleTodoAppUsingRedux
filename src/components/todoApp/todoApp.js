@@ -12,13 +12,8 @@ import { getVisibleTodos } from "../../utils/utils";
 // non function component
 class TodoApp extends Component {
   render() {
-    let visibleTodoList = getVisibleTodos(
-      this.props.visibilityFilter,
-      this.props.todoList
-    );
-
-    console.log("actual", this.props.todoList);
-    console.log("filtered", visibleTodoList);
+    const { visibilityFilter, todoList, nextId } = this.props;
+    let visibleTodoList = getVisibleTodos(visibilityFilter, todoList);
 
     return (
       <div className="Todo-App">
@@ -30,7 +25,7 @@ class TodoApp extends Component {
               type: "ADD_TODO",
               payload: {
                 text: this.input.value,
-                id: this.props.nextId,
+                id: nextId,
                 completed: false
               }
             });
@@ -59,9 +54,16 @@ class TodoApp extends Component {
           ))}
         </ul>
         <p>
-          Show: <FilterLink filter="SHOW_ALL">ALL</FilterLink>{" "}
-          <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
-          <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
+          Show:{" "}
+          <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>
+            ALL
+          </FilterLink>{" "}
+          <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter}>
+            Active
+          </FilterLink>{" "}
+          <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>
+            Completed
+          </FilterLink>
         </p>
       </div>
     );
