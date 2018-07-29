@@ -22,3 +22,12 @@ export const visibilityFilter = (state = "SHOW_ALL", action) => {
       return state;
   }
 };
+
+export const nextId = (state = 1, action) => {
+  switch (action.type) {
+    case "GENERATE_NEXT_ID":
+      return ++state;
+    default:
+      return state;
+  }
+};
