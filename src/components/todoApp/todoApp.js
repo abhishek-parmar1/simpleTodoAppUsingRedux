@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+
+// import the store
 import { store } from "../../index";
 
+// import the filter component
+import FilterLink from "../filterLink/filterLink";
+
+// non function component
 class TodoApp extends Component {
   render() {
     return (
@@ -40,6 +46,11 @@ class TodoApp extends Component {
             </li>
           ))}
         </ul>
+        <p>
+          Show: <FilterLink filter="SHOW_ALL">ALL</FilterLink>{" "}
+          <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
+          <FilterLink filter="SHOW_COMLETED">Completed</FilterLink>
+        </p>
       </div>
     );
   }
