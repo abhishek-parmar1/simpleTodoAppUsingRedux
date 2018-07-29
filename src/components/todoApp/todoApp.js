@@ -6,9 +6,15 @@ import { store } from "../../index";
 // import the filter component
 import FilterLink from "../filterLink/filterLink";
 
+// import utils here
+import { getVisibleTodos } from "../../utils/utils";
+
 // non function component
 class TodoApp extends Component {
   render() {
+    const { visibilityFilter, todoList, nextId } = this.props;
+    let visibleTodoList = getVisibleTodos(visibilityFilter, todoList);
+
     return (
       <div className="Todo-App">
         <h1>Simple Todo App using react and redux created with codesandbox</h1>
@@ -19,7 +25,8 @@ class TodoApp extends Component {
               type: "ADD_TODO",
               payload: {
                 text: this.input.value,
-                id: this.props.nextId
+                id: nextId,
+                completed: false
               }
             });
             store.dispatch({ type: "GENERATE_NEXT_ID" });
@@ -29,7 +36,7 @@ class TodoApp extends Component {
           Add Todo
         </button>
         <ul>
-          {this.props.todoList.map(todo => (
+          {visibleTodoList.map(todo => (
             <li
               key={todo.id}
               onClick={() =>
@@ -47,9 +54,16 @@ class TodoApp extends Component {
           ))}
         </ul>
         <p>
-          Show: <FilterLink filter="SHOW_ALL">ALL</FilterLink>{" "}
-          <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
-          <FilterLink filter="SHOW_COMLETED">Completed</FilterLink>
+          Show:{" "}
+          <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>
+            ALL
+          </FilterLink>{" "}
+          <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter}>
+            Active
+          </FilterLink>{" "}
+          <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>
+            Completed
+          </FilterLink>
         </p>
       </div>
     );

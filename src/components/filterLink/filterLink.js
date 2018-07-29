@@ -4,7 +4,8 @@ import React from "react";
 import { store } from "../../index";
 
 // function component
-const FilterLink = ({ filter, children }) => {
+const FilterLink = ({ filter, currentFilter, children }) => {
+  if (filter === currentFilter) return <span>{children}</span>;
   return (
     <a
       href="www.google.com"

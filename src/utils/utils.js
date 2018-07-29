@@ -6,5 +6,7 @@ export const getVisibleTodos = (filter, todoList) => {
       return todoList.filter(t => t.completed);
     case "SHOW_ACTIVE":
       return todoList.filter(t => !t.completed);
+    default:
+      return todoList;
   }
 };
