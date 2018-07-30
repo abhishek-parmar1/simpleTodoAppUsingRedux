@@ -3,8 +3,9 @@ import React, { Component } from "react";
 // import the store
 import { store } from "../../index";
 
-// import the filter component
+// import the component here
 import FilterLink from "../filterLink/filterLink";
+import TodoList from "../todoList/todoList";
 
 // import utils here
 import { getVisibleTodos } from "../../utils/utils";
@@ -35,24 +36,15 @@ class TodoApp extends Component {
         >
           Add Todo
         </button>
-        <ul>
-          {visibleTodoList.map(todo => (
-            <li
-              key={todo.id}
-              onClick={() =>
-                store.dispatch({
-                  type: "TOGGLE_TODO",
-                  payload: todo.id
-                })
-              }
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none"
-              }}
-            >
-              {todo.id} || {todo.text}
-            </li>
-          ))}
-        </ul>
+        <TodoList
+          todos={visibleTodoList}
+          onTodoClick={id =>
+            store.dispatch({
+              type: "TOGGLE_TODO",
+              payload: id
+            })
+          }
+        />
         <p>
           Show:{" "}
           <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>
