@@ -5,7 +5,7 @@ import { combineReducers, createStore } from "redux";
 import "./styles.css";
 
 // import the components
-import TodoApp from "./components/todoApp/todoApp";
+import TodoAppContainer from "./components/todoAppContainer/todoAppContainer";
 
 // import reducers
 import * as reducers from "./reducers";
@@ -17,7 +17,7 @@ export const store = createStore(rootReducer);
 // component rendering configuration
 const rootElement = document.getElementById("root");
 const render = () => {
-  ReactDOM.render(<TodoApp {...store.getState()} />, rootElement);
+  ReactDOM.render(<TodoAppContainer {...store.getState()} />, rootElement);
 };
 
 // call the render function whenever the state changes
