@@ -6,6 +6,7 @@ import { store } from "../../index";
 // import the component here
 import FilterLink from "../filterLink/filterLink";
 import TodoList from "../todoList/todoList";
+import AddTodo from "../addTodo/addTodo";
 
 // import utils here
 import { getVisibleTodos } from "../../utils/utils";
@@ -19,23 +20,19 @@ class TodoApp extends Component {
     return (
       <div className="Todo-App">
         <h1>Simple Todo App using react and redux created with codesandbox</h1>
-        <input ref={node => (this.input = node)} />
-        <button
-          onClick={() => {
+        <AddTodo
+          onAddClick={text => {
             store.dispatch({
               type: "ADD_TODO",
               payload: {
-                text: this.input.value,
+                text: text,
                 id: nextId,
                 completed: false
               }
             });
             store.dispatch({ type: "GENERATE_NEXT_ID" });
-            this.input.value = "";
           }}
-        >
-          Add Todo
-        </button>
+        />
         <TodoList
           todos={visibleTodoList}
           onTodoClick={id =>
