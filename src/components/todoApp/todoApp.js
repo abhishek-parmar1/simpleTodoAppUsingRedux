@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import { store } from "../../index";
 
 // import the component here
-import FilterLink from "../filterLink/filterLink";
 import TodoList from "../todoList/todoList";
 import AddTodo from "../addTodo/addTodo";
+import Footer from "../footer/footer";
 
 // import utils here
 import { getVisibleTodos } from "../../utils/utils";
@@ -42,18 +42,12 @@ class TodoApp extends Component {
             })
           }
         />
-        <p>
-          Show:{" "}
-          <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>
-            ALL
-          </FilterLink>{" "}
-          <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter}>
-            Active
-          </FilterLink>{" "}
-          <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>
-            Completed
-          </FilterLink>
-        </p>
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={filter =>
+            store.dispatch({ type: "SET_VISIBILITY_FILTER", payload: filter })
+          }
+        />
       </div>
     );
   }
