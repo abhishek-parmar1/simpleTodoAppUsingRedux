@@ -12,12 +12,12 @@ import * as reducers from "./reducers";
 
 // store configuration
 const rootReducer = combineReducers({ ...reducers });
-export const store = createStore(rootReducer);
+const store = createStore(rootReducer);
 
 // component rendering configuration
 const rootElement = document.getElementById("root");
 const render = () => {
-  ReactDOM.render(<TodoAppContainer />, rootElement);
+  ReactDOM.render(<TodoAppContainer store={store} />, rootElement);
 };
 
 // call the render function whenever the state changes

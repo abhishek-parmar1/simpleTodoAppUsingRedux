@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
-import { store } from "../../index";
-
 // functional component
 class AddTodo extends Component {
   componentDidMount() {
+    const { store } = this.props;
     this.unsubscribe = store.subscribe(() => {
       // to forcce fully update the component when state changes
       this.forceUpdate();
@@ -17,6 +16,7 @@ class AddTodo extends Component {
 
   render() {
     const props = this.props;
+    const { store } = this.props;
     const state = store.getState();
     let input;
 
