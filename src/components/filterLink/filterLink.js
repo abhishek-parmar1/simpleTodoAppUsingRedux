@@ -1,22 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 
-// import the store
 import { store } from "../../index";
 
-// presentational component
-const FilterLink = ({ filter, currentFilter, children, onClick }) => {
-  if (filter === currentFilter) return <span>{children}</span>;
-  return (
-    <a
-      href="www.google.com"
-      onClick={e => {
-        e.preventDefault();
-        onClick(filter);
-      }}
-    >
-      {children}
-    </a>
-  );
-};
+// import th components here
+import Link from "../link/link";
+
+// functional component
+class FilterLink extends Component {
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => {
+      // to forcce fully update the component when state changes
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  render() {
+    const props = this.props;
+    const state = store.getState();
+    return (
+      <Link
+        active={props.filter === state.visibilityFilter}
+        onClick={() => {
+          store.dispatch({
+            type: "SET_VISIBILITY_FILTER",
+            payload: props.filter
+          });
+        }}
+      >
+        {props.children}
+      </Link>
+    );
+  }
+}
 
 export default FilterLink;

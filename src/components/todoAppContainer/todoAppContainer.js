@@ -37,12 +37,7 @@ const TodoAppContainer = ({ visibilityFilter, todoList, nextId }) => (
         })
       }
     />
-    <Footer
-      visibilityFilter={visibilityFilter}
-      onFilterClick={filter =>
-        store.dispatch({ type: "SET_VISIBILITY_FILTER", payload: filter })
-      }
-    />
+    <Footer />
   </div>
 );
 export default TodoAppContainer;
