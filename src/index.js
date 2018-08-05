@@ -17,7 +17,7 @@ export const store = createStore(rootReducer);
 // component rendering configuration
 const rootElement = document.getElementById("root");
 const render = () => {
-  ReactDOM.render(<TodoAppContainer {...store.getState()} />, rootElement);
+  ReactDOM.render(<TodoAppContainer />, rootElement);
 };
 
 // call the render function whenever the state changes
