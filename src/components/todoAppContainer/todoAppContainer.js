@@ -9,9 +9,9 @@ import Footer from "../footer/footer";
 const TodoAppContainer = ({ store }) => (
   <div className="Todo-App">
     <h1>Simple Todo App using react and redux created with codesandbox</h1>
-    <AddTodo store={store} />
-    <VisibleTodoList store={store} />
-    <Footer store={store} />
+    <AddTodo />
+    <VisibleTodoList />
+    <Footer />
   </div>
 );
 export default TodoAppContainer;

@@ -4,18 +4,11 @@ import React from "react";
 import FilterLink from "../filterLink/filterLink";
 
 // presentational component
-const Footer = ({ store }) => (
+const Footer = () => (
   <p>
-    Show:{" "}
-    <FilterLink filter="SHOW_ALL" store={store}>
-      ALL
-    </FilterLink>{" "}
-    <FilterLink filter="SHOW_ACTIVE" store={store}>
-      Active
-    </FilterLink>{" "}
-    <FilterLink filter="SHOW_COMPLETED" store={store}>
-      Completed
-    </FilterLink>
+    Show: <FilterLink filter="SHOW_ALL">ALL</FilterLink>{" "}
+    <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>{" "}
+    <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
   </p>
 );
 export default Footer;

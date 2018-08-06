@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from "prop-types";
 
 // import th components here
 import Link from "../link/link";
@@ -6,7 +7,7 @@ import Link from "../link/link";
 // functional component
 class FilterLink extends Component {
   componentDidMount() {
-    const { store } = this.props;
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() => {
       // to forcce fully update the component when state changes
       this.forceUpdate();
@@ -19,7 +20,7 @@ class FilterLink extends Component {
 
   render() {
     const props = this.props;
-    const { store } = this.props;
+    const { store } = this.context;
     const state = store.getState();
     return (
       <Link
@@ -36,5 +37,9 @@ class FilterLink extends Component {
     );
   }
 }
+
+FilterLink.contextTypes = {
+  store: PropTypes.object
+};
 
 export default FilterLink;

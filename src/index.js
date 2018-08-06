@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
 
 import "./styles.css";
 
@@ -17,7 +18,12 @@ const store = createStore(rootReducer);
 // component rendering configuration
 const rootElement = document.getElementById("root");
 const render = () => {
-  ReactDOM.render(<TodoAppContainer store={store} />, rootElement);
+  ReactDOM.render(
+    <Provider store={store}>
+      <TodoAppContainer />
+    </Provider>,
+    rootElement
+  );
 };
 
 // call the render function whenever the state changes
