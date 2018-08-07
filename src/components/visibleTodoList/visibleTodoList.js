@@ -1,5 +1,8 @@
 import { connect } from "react-redux";
 
+// import actions here
+import mapDispatchToProps from "../../factory";
+
 // import utils here
 import { getVisibleTodos } from "../../utils/utils";
 
@@ -9,17 +12,6 @@ import TodoList from "../todoList/todoList";
 const mapStateToProps = state => {
   return {
     todos: getVisibleTodos(state.visibilityFilter, state.todoList)
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onTodoClick: id => {
-      dispatch({
-        type: "TOGGLE_TODO",
-        payload: id
-      });
-    }
   };
 };
 

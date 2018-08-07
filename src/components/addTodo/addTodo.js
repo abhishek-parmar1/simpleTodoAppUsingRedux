@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
+// import your actions here
+import mapDispatchToProps from "../../factory";
+
 // functional component
-let AddTodo = ({ dispatch, nextId }) => {
+let AddTodo = ({ addTodo, generateNextId, nextId }) => {
   let input;
 
   return (
@@ -10,15 +13,12 @@ let AddTodo = ({ dispatch, nextId }) => {
       <input ref={node => (input = node)} />
       <button
         onClick={() => {
-          dispatch({
-            type: "ADD_TODO",
-            payload: {
-              text: input.value,
-              id: nextId,
-              completed: false
-            }
+          addTodo({
+            text: input.value,
+            id: nextId,
+            completed: false
           });
-          dispatch({ type: "GENERATE_NEXT_ID" });
+          generateNextId({ type: "GENERATE_NEXT_ID" });
           input.value = "";
         }}
       >
@@ -32,10 +32,6 @@ const mapStateToProps = state => {
   return {
     nextId: state.nextId
   };
-};
-
-const mapDispatchToProps = dispatch => {
-  return { dispatch };
 };
 
 // it will work because there are two components
