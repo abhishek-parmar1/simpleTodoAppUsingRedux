@@ -6,7 +6,7 @@ import AddTodo from "../addTodo/addTodo";
 import Footer from "../footer/footer";
 
 // non function container component
-const TodoAppContainer = ({ store }) => (
+const TodoAppContainer = () => (
   <div className="Todo-App">
     <h1>Simple Todo App using react and redux created with codesandbox</h1>
     <AddTodo />
